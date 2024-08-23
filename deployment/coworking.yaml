@@ -46,11 +46,31 @@ spec:
           timeoutSeconds: 5
         envFrom:
         - configMapRef:
-            name: <NAME OF THE ConfigMap>
+            name: postgresql-service-postgresql
         env:
+        - name: DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: postgresql-service-postgresql
+              key: DB_USERNAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgresql-service-postgresql
+              key: DB_USER
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: postgresql-service-postgresql
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: postgresql-service-postgresql
+              key: DB_PORT
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: <NAME OF THE Secret>
-              key: <THE KEY FROM Secret WHICH has THE ENCODED PASSWORD>
+              name: db-secret
+              key: DB_PASSWORD
       restartPolicy: Always
