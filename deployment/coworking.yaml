@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 052706267579.dkr.ecr.us-east-1.amazonaws.com/test-coworking-analytics:7
+        image: 167297910024.dkr.ecr.us-east-1.amazonaws.com/coworking:3
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -48,26 +48,6 @@ spec:
         - configMapRef:
             name: postgresql-service-postgresql
         env:
-        - name: DB_USERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: postgresql-service-postgresql
-              key: DB_USERNAME
-        - name: DB_USER
-          valueFrom:
-            configMapKeyRef:
-              name: postgresql-service-postgresql
-              key: DB_USER
-        - name: DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: postgresql-service-postgresql
-              key: DB_HOST
-        - name: DB_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: postgresql-service-postgresql
-              key: DB_PORT
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
