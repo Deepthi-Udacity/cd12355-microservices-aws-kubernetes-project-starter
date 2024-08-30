@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 167297910024.dkr.ecr.us-east-1.amazonaws.com/coworking:5
+        image: 167297910024.dkr.ecr.us-east-1.amazonaws.com/coworking:7
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -53,4 +53,9 @@ spec:
             secretKeyRef:
               name: mypassword
               key: DB_PASSWORD
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mypassword
+              key: DB_USERNAME
       restartPolicy: Always
